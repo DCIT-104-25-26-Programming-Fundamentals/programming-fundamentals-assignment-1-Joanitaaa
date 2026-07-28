@@ -45,11 +45,9 @@ def is_prime(number: int) -> bool:
     A prime number is a whole number greater than 1 that has no positive
     divisors other than 1 and itself.
     """
-    # Numbers less than 2 are not prime
     if number < 2:
         return False
 
-    # 2 is the only even prime number
     if number == 2:
         return True
 
