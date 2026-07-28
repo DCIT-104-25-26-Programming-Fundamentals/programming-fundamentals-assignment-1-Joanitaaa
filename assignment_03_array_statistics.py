@@ -39,3 +39,59 @@
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
 
+def calculate_sum(numbers: list[float]) -> float:
+    """Calculates the sum of numbers in a list using a loop."""
+    total = 0.0
+    for num in numbers:
+        total += num
+    return total
+
+
+def calculate_average(numbers: list[float]) -> float:
+    """Calculates the average of numbers in a list."""
+    if not numbers:
+        return 0.0
+    return calculate_sum(numbers) / len(numbers)
+
+
+def find_maximum(numbers: list[float]) -> float:
+    """Finds the maximum value in a list using a loop."""
+    max_val = numbers[0]
+    for num in numbers[1:]:
+        if num > max_val:
+            max_val = num
+    return max_val
+
+
+def find_minimum(numbers: list[float]) -> float:
+    """Finds the minimum value in a list using a loop."""
+    min_val = numbers[0]
+    for num in numbers[1:]:
+        if num < min_val:
+            min_val = num
+    return min_val
+
+
+if __name__ == "__main__":
+    try:
+        count = int(input("How many numbers? "))
+
+        if count <= 0:
+            print("Error: Number of items must be a positive integer.")
+        else:
+            numbers_list = []
+            for i in range(1, count + 1):
+                val = float(input(f"Enter number {i}: "))
+                numbers_list.append(val)
+
+            # Format integers cleanly if whole numbers were entered
+            fmt = lambda val: int(val) if val.is_integer() else val
+
+            print("\nResults:")
+            print(f"Sum:     {fmt(calculate_sum(numbers_list))}")
+            print(f"Average: {calculate_average(numbers_list):.1f}")
+            print(f"Maximum: {fmt(find_maximum(numbers_list))}")
+            print(f"Minimum: {fmt(find_minimum(numbers_list))}")
+
+    except ValueError:
+        print("Error: Please enter valid numerical inputs.")
