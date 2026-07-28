@@ -55,3 +55,45 @@
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
 
+def print_single_table(number: int, max_multiplier: int = 12) -> None:
+    """Prints the multiplication table for a given number from 1 up to max_multiplier."""
+    print(f"\nMultiplication Table for {number}:")
+    for i in range(1, max_multiplier + 1):
+        product = number * i
+        # String formatting keeps numbers neatly aligned
+        print(f"  {number:<2} x {i:>2} = {product:>3}")
+
+
+def print_tables_up_to_n(n: int) -> None:
+    """Prints multiplication tables for every number from 1 up to N."""
+    for current_num in range(1, n + 1):
+        print_single_table(current_num)
+        if current_num < n:
+            print("---------------------------")
+
+
+if __name__ == "__main__":
+    # --- PART A: Single Table ---
+    print("=========================================")
+    print("PART A: Single Multiplication Table")
+    print("=========================================")
+    try:
+        single_num = int(input("Enter a number: "))
+        print_single_table(single_num)
+    except ValueError:
+        print("Error: Please enter a valid integer.")
+
+    # --- PART B: Tables 1 to N ---
+    print("\n=========================================")
+    print("PART B: Multiplication Tables 1 to N")
+    print("=========================================")
+    try:
+        n_input = int(input("Enter a number N: "))
+
+        if n_input <= 0:
+            print("Error: N must be a positive integer.")
+        else:
+            print_tables_up_to_n(n_input)
+
+    except ValueError:
+        print("Error: Please enter a valid integer.")
